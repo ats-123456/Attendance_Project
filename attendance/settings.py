@@ -87,11 +87,22 @@ WSGI_APPLICATION = 'attendance.wsgi.application'
 # }
 
 
-import os
-import dj_database_url
+# import os
+# import dj_database_url
+
+# DATABASES = {
+#     'default': dj_database_url.config(default=os.getenv('postgresql://attendance_db_d7ej_user:QMdyzWs6Eksm6GEg7tDNRlC1CaRChF48@dpg-cvhtqn9opnds73fnqp10-a/attendance_db_d7ej'))
+# }
 
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('postgresql://attendance_db_d7ej_user:QMdyzWs6Eksm6GEg7tDNRlC1CaRChF48@dpg-cvhtqn9opnds73fnqp10-a/attendance_db_d7ej'))
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'attendance_db_d7ej',
+        'USER': 'attendance_db_d7ej_user',
+        'PASSWORD': 'QMdyzWs6Eksm6GEg7tDNRlC1CaRChF48',
+        'HOST': 'dpg-cvhtqn9opnds73fnqp10-a',
+        'PORT': '5432',  # Default PostgreSQL port
+    }
 }
 
 
