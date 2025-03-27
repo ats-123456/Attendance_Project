@@ -100,7 +100,7 @@ DATABASES = {
         'NAME': 'attendance_db_d7ej',
         'USER': 'attendance_db_d7ej_user',
         'PASSWORD': 'QMdyzWs6Eksm6GEg7tDNRlC1CaRChF48',
-        'HOST': 'dpg-cvhtqn9opnds73fnqp10-a.db.postgres.com',
+        'HOST': 'dpg-cvhtqn9opnds73fnqp10-a',
         'PORT': '5432',  # Default PostgreSQL port
     }
 }
