@@ -79,30 +79,32 @@ WSGI_APPLICATION = 'attendance.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+import os
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 
 
-# import os
-# import dj_database_url
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',  # Supabase default database name
+        'USER': 'postgres',
+        'PASSWORD': 't7aS9Zv0WLhtiIKW',  # Supabase password
+        'HOST': 'db.supabase.co',  # Supabase database host
+        'PORT': '5432',  # PostgreSQL default port
+    }
+}
 
-# DATABASES = {
-#     'default': dj_database_url.config(default=os.getenv('postgresql://attendance_db_d7ej_user:QMdyzWs6Eksm6GEg7tDNRlC1CaRChF48@dpg-cvhtqn9opnds73fnqp10-a/attendance_db_d7ej'))
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'attendance_db_d7ej',
-#         'USER': 'attendance_db_d7ej_user',
-#         'PASSWORD': 'QMdyzWs6Eksm6GEg7tDNRlC1CaRChF48y',
-#         'HOST': 'dpg-cvhtqn9opnds73fnqp10-a',
-#         'PORT': '5432',  # Default PostgreSQL port
-#     }
 
 
 
