@@ -16,6 +16,17 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+
+
+
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
+
+SECRET_KEY ='V[i)EQk3il3+y*eCX[dFd^ONGqt30tRLn&SxTx1N-wLsIfONDA'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -27,7 +38,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = []
 # ALLOWED_HOSTS = ['https://attendance-project-1.onrender.com/']
-ALLOWED_HOSTS = ['attendance-project-1.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['attendance-project-1.onrender.com',  '127.0.0.1']
 
 
 
@@ -79,35 +90,64 @@ WSGI_APPLICATION = 'attendance.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-import os
-import dj_database_url
-
-DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
-}
-
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',  # Supabase default database name
-        'USER': 'postgres',
-        'PASSWORD': 't7aS9Zv0WLhtiIKW',  # Supabase password
-        'HOST': 'db.supabase.co',  # Supabase database host
-        'PORT': '5432',  # PostgreSQL default port
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
 
 
-#huu
+# import os
+# import dj_database_url
+
+# DATABASES = {
+#     'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+# }
+
+
+
+# import os
+import dj_database_url
+
+# DATABASES = {
+#     'default': dj_database_url.config(default='postgresql://postgres:fejkLYwWjiytQnTbHNXxMGTCTnvEAQly@postgres.railway.internal:5432/railway')
+# }
+
+DATABASES = {
+    'default' : dj_database_url.parse(env('DATABASE_URL'))
+}
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgres',  # Supabase default database name
+#         'USER': 'postgres',
+#         'PASSWORD': 't7aS9Zv0WLhtiIKW',  # Supabase password
+#         'HOST': 'db.supabase.co',  # Supabase database host
+#         'PORT': '5432',  # PostgreSQL default port
+#     }
+# }
+
+from dotenv import load_dotenv
+load_dotenv()
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'railway',  # Supabase default database name
+#         'USER': 'postgres',
+#         'PASSWORD': 'DuSoliBPtqyYqenqzgRXQyOBdaWeUHCY',  # Supabase password
+#         'HOST': 'attendance-project-1.onrender.com',  # Supabase database host
+#         'PORT': '5432',  # PostgreSQL default port
+#     }
+# }
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
